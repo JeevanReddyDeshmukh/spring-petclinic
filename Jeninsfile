@@ -1,0 +1,12 @@
+pipeline{
+    agent any
+    stages{
+        stage(code){
+             steps{
+                sh "touch jeeva"
+        }
+          
+
+          }
+    }
+}
