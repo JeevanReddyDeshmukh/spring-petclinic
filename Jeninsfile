@@ -1,12 +1,22 @@
 pipeline{
     agent any
+    triggers{
+        pollscm('*/5 * * * *')
+    }
     stages{
-        stage(code){
-             steps{
-                sh "touch jeeva"
-        }
-          
+        stage('code'){
+            steps{
+                git url :'https://github.com/JeevanReddyDeshmukh/spring-petclinic.git',
+                branch: 'dev'
 
-          }
+            }
+
+        }
+        stage('build'){
+            steps{
+                sh 'mvn clean'
+            }
+        }
+     }
     }
 }
